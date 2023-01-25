@@ -20,6 +20,10 @@ target_sources(
 # Executable target for the application
 add_executable(checker)
 
+
+# Executable target for the application
+add_executable(cppchecker)
+
 target_link_libraries(
 	checker
 	PRIVATE
@@ -39,23 +43,28 @@ target_sources(
 # https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md
 #
 Include(FetchContent)
-
+include(ExternalProject)
 FetchContent_Declare(
   Catch2
   GIT_REPOSITORY https://github.com/catchorg/Catch2.git
   GIT_TAG        v3.1.1)
 
-
-FetchContent_Declare(
-		CPPCATCH
-		GIT_REPOSITORY https://github.com/danmar/cppcheck.git
-		GIT_TAG        2.9)
-
 FetchContent_MakeAvailable(Catch2)
-FetchContent_MakeAvailable(CPPCATCH)
+
 list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
-
+ExternalProject_Add(
+		cppcheck
+		GIT_REPOSITORY https://github.com/danmar/cppcheck.git
+		GIT_TAG "2.9"
+)
+list(APPEND CMAKE_MODULE_PATH ${cppcheck_SOURCE_DIR}/extras)
+target_sources(
+		cppchecker
+		PRIVATE
+		test/solution.cpp
+)
+add_dependencies(cppchecker cppcheck)
 # Executable target for the unit tests
 add_executable(testing)
 

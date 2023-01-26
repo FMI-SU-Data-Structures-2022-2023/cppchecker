@@ -20,10 +20,6 @@ target_sources(
 # Executable target for the application
 add_executable(checker)
 
-
-# Executable target for the application
-add_executable(cppchecker)
-
 target_link_libraries(
 	checker
 	PRIVATE

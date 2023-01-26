@@ -1,3 +1,4 @@
+#!/bin/bash
 if [-d "./cppcheker"]
 then
 	git clone -b 2.9 https://github.com/danmar/cppcheck.git cppchecker

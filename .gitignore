@@ -10,3 +10,4 @@ x64/
 CmakeFiles/
 .cmake/
 build/
+cppchecker/

@@ -1,9 +1,10 @@
 #!/bin/bash
-if [-d "./cppcheker"]
+if [ -d "./cppcheker" ]
 then
-	git clone -b 2.9 https://github.com/danmar/cppcheck.git cppchecker
-else
 	echo "Cppchecker is already downloaded"
+else
+	git clone -b 2.9 https://github.com/danmar/cppcheck.git cppchecker
+
 fi
 cd ./cppchecker
 mkdir build

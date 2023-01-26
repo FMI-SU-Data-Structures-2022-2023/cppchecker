@@ -53,18 +53,7 @@ FetchContent_MakeAvailable(Catch2)
 
 list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
 
-ExternalProject_Add(
-		cppcheck
-		GIT_REPOSITORY https://github.com/danmar/cppcheck.git
-		GIT_TAG "2.9"
-)
-list(APPEND CMAKE_MODULE_PATH ${cppcheck_SOURCE_DIR}/extras)
-target_sources(
-		cppchecker
-		PRIVATE
-		test/solution.cpp
-)
-add_dependencies(cppchecker cppcheck)
+
 # Executable target for the unit tests
 add_executable(testing)
 

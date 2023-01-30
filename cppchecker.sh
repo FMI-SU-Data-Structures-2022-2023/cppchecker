@@ -13,5 +13,5 @@ cmake ..
 cmake --build .
 cd ../..
 echo "Cppchecker is build successfully. Now it is time to validate the code..."
-./cppchecker/build/bin/cppcheck ./src --error-exitcode=127
+./cppchecker/build/bin/cppcheck ./src --error-exitcode=127 --enable=all
 
